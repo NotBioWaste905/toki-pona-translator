@@ -8,17 +8,13 @@
     <div class="container-fluid" style="display: flex; justify-content: center; align-items: center;">
         <div class="row" style="display: flex; justify-content: center; align-items: center;">
             <div class="col-md-6" style="margin-right: 20px;">
-                <h3>English</h3>
-                <form action="{{ url_for("translate")}}" method="post">
-                    <textarea class="form-control" rows="15" id="inputText" name="inputText" placeholder="Enter your text">{{ input }}</textarea>
-                    <button type="submit">Translate</button>
-                </form>
+                <h3>Enter text to translate to Tokipona</h3>
+                <textarea class="form-control" rows="15" id="inputText"></textarea>
             </div>
             <div class="col-md-6">
-                <h3>Toki pona</h3>
-                <textarea class="form-control" rows="15" id="outputText" readonly>{{ translation }}</textarea>
+                <h3>Перевод текста</h3>
+                <textarea class="form-control" rows="15" id="outputText" disabled></textarea>
             </div>
         </div>
-    </div>
     </div>
 {% endblock %}
