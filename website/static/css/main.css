@@ -53,15 +53,18 @@ body {
     height: 100vh;
     display: flex;
     align-items: center;
+    /* align-self: center; */
     justify-content: center;
     text-align: center;
     overflow: hidden;
     position: relative;
+    will-change: transform;
 }
 .layer {
     height: 100%;
     width: 100%;
     position: absolute;
+    align-self: center;
     background-size: cover;
     background-position: center;
     will-change: transform;
@@ -100,12 +103,13 @@ body {
     min-height: 100vh;
     background-size: cover;
     background-position: center;
+    background-color: #ffff63;
     color: black;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-	text-align: center;
+	text-align: justify;
 	/* Update: */
 	top: -1px;
 	z-index: 10;
