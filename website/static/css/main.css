@@ -153,3 +153,14 @@ body {
     text-decoration: none;
     font-weight: bold;
 }
+
+.container_about {
+    max-width: 800px; /* Задайте максимальную ширину блока контейнера */
+    margin: 0 auto; /* Центрирование блока контейнера по горизонтали */
+    padding: 20px; /* Отступы вокруг текста внутри контейнера */
+    box-sizing: border-box; /* Учесть padding в общей ширине блока контейнера */
+  }
+  
+  .text-center {
+    text-align: center; /* Выравнивание текста по центру */
+  }
