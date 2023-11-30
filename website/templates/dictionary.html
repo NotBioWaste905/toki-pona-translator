@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    О языке Токипона
+{% endblock %}
+
+{% block body %}
+
+<div class="wrapper">
+    <div class="content">
+        
+
+    <h3>English-TokiPona dictionary</h3>
+
+    <form method="post" action="{{ url_for('dictionary') }}">
+        <label for="englishWord">Enter an English word:</label>
+        <input type="text" id="englishWord" name="englishWord">
+        <button type="submit" class="translate-btn">Search</button>
+
+    </form>
+
+    {% if results %}
+        <h3>Translations:</h3>
+        <ul>
+            {% for result in results %}
+                <li>{{ result["tok"] }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    </div>
+</div>
+
+    {% endblock %}
