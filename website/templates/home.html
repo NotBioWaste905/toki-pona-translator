@@ -4,40 +4,62 @@
     О языке Токипона
 {% endblock %}
 
+<!-- Здесь происходит вставка панели навигации -->
+
+
 {% block body %}
 <script type="text/javascript" src="{{ url_for('static', filename='libs/gsap/gsap.min.js') }} " defer></script>
 <script type="text/javascript" src="{{ url_for('static', filename='libs/gsap/ScrollTrigger.min.js') }} " defer></script>
 <script type="text/javascript" src="{{ url_for('static', filename='libs/gsap/ScrollSmoother.min.js') }} " defer></script>
-
 <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}" defer></script>
-
-    <div class="wrapper">
-        <div class="content">
-            <header class="main-header">
-                <div class="layers">
-                    <div class="layer__header">
-                        <div class="layers__caption">Welcome to the most accurate</div>
-                        <div class="layers__title">TokiPona Translator</div>
-                    </div>
-                    <div class="layer layers__base" style="background-image"> <img src="{{ url_for('static', filename='img/bg_black.png') }}"></div>
-                    <div class="layer layers__middle" style="background-image"> <img src="{{ url_for('static', filename='img/beams.png') }}"></div>
-                    <div class="layer layers__front" style="background-image"> <img src="{{ url_for('static', filename='img/sun.png') }}"></div>
+    
+<!-- Основной контент -->
+<div class="wrapper">
+    <div class="content">
+        
+        <!-- Первый логический блок: приветствие и лого -->
+        <header class="main-header">
+            <div class="layers">
+                <div class="layer__header">
+                    <div class="layers__caption">Welcome to the most accurate</div>
+                    <div class="layers__title">TokiPona Translator</div>
                 </div>
-            </header>
-            
-            <article class="main-article" style="background-image">
-                    <div class="main-article__content">   
-                    <h1 class="main-article__header">Токипона - универсальный искусственный язык</h1>
-                    <p class="main-article__paragraph">Токипона - это искусственный язык, созданный канадской лингвисткой и переводчицей Соней Ланг в 2000-х. Название Toki Pona переводится как "язык добра".</p>
-                    <p class="main-article__paragraph">Ланг во время работы по созданию языка была вдохновлена учениями о дао и дзэн и работами философов-примитивистов. </p>
-                    <p class="main-article__paragraph">Токипона является очень простым языком, в его лексиконе около 120 корней. Минимализм лексики сведён также к тому, что, например, в языке отсутствуют названия животных и растений. В этом языке отсутствуют грамматические правила, что делает его очень легким в изучении.</p>
-                    <p class="main-article__paragraph">На токипоне общаются в основном в Интернете, а за его пределами -- в Канаде, США, Европе, Израиле, Японии и России. В 2020 году ограниченным тиражом в печати вышел учебник, составленный интернет-активистами и изданный издательством Скрипториум.</p>
-                    <p class="main-article__paragraph">Вы можете изучить словарь Токипоны и сверить переводы здесь: <a href="https://zrajm.github.io/toki-pona-syllabics/dictionary/">словарь</a>.</p>
-                </div>
-            
-            <div class="copy">© TokiPona lovers</div>
-            </article>
+                <div class="layer layers__middle" style="transform: scale(0.5) translateY(10vh);"> <img src="{{ url_for('static', filename='img/beams_orig.png') }}"></div>
+                <div class="layer layers__front" style="transform: scale(0.5) translateY(60vh);"> <img src="{{ url_for('static', filename='img/sun_orig.png') }}"></div>
+            </div>
+        </header>
+        
+        <!-- Второй блок: Введение -->
+        <div class="layer layers__text layers__text-black parallax" data-speed="1.2">
+            <div class="text-content">
+                <h1 class="main-article__header">Learn more about Toki Pona with us!</h1>
+                <p class="main-article__paragraph">Toki Pona, an isolating language with 14 phonemes, embraces minimalism by focusing on simple, universal concepts to convey meaning with a small vocabulary. In "Toki Pona: The Language of Good," Lang introduces about 120 words (pu), while the Toki Pona Dictionary lists 137 essential words and additional less-used ones (ku). The language's simplicity in pronunciation serves as a cross-cultural bridge, though it wasn't initially designed as an international auxiliary language.</p>
+                <br>
+                <p class="main-article__paragraph">Inspired by Taoist philosophy, Toki Pona aims to help users concentrate on fundamental aspects of life, promoting positive thinking in line with the Sapir–Whorf hypothesis. Despite its limited vocabulary, speakers effectively communicate, relying on context and word combinations for specific meanings. </p>
+                <br>
+                <p class="main-article__paragraph">Since its creation, a small online community of Toki Pona speakers has formed, with occasional in-person meetings during the 2000s and 2010s complementing the predominant online interactions in chat rooms and social media.</p>
+            </div>
         </div>
-    </div>
+        
+        <!-- Третий блок: Как пользоваться сайтом -->
+        <div class="layer layers__text layers__text-white parallax" data-speed="-1.8">
+            <div class="text-content">
+                <h1>How to use the website:</h1>
+                <ul class="highlight-list">
+                    <li><a href="/phrasebook" class="highlight-link">— Check out the basic phrases and rules in our <span class="highlight">Phrasebook</span></a></li>
+                    <li><a href="/translate" class="highlight-link">— Translate unknown phrases in <span class="highlight">Translator</span></a></li>
+                    <li><a href="dictionary" class="highlight-link">— Study contextual usages in <span class="highlight">Dictionary</span></a></li>
+                    <li><a href="/about" class="highlight-link">— If you want to support us, then <span class="highlight">Support us</span></a></li>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </ul>
+            </div>
+        </div>
 
+        <div><center>© TokiPona amateurs</center></div>
+
+    </div>
+</div>
 {% endblock %}
