@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 :root {
     --index: calc(1vw + 1vh);
 }
@@ -11,17 +12,22 @@
     font-family: raleway_f;
     src: url(../fonts/raleway-regular.woff2);
 }
+
 @font-face {
     font-family: raleway_f;
     src: url(../fonts/raleway-black.woff2);
     font-weight: 900;
 }
+
 body {
     font-family: raleway_f, sans-serif;
     line-height: 1.55;
 }
+
+
+/* панель навигации */
 .navbar {
-    background-color: black;
+    background-color: white;
     color: #ffff63;
     text-align: center;
     display: flex;
@@ -34,7 +40,7 @@ body {
     margin-right: 10px;
 }
 .navbar a {
-    color: white;
+    color: black;
     margin: 0 10px;
     text-decoration: none;
     font-weight: light;
@@ -45,8 +51,22 @@ body {
 .navbar a:hover {
     text-decoration: underline;
 }
-.main-header {
-    position: relative;
+
+.content{
+    font-family: 'raleway_f', sans-serif;
+    max-width: 800px; /* Замените на желаемую ширину */
+    margin: 0 auto; 
+}
+
+/* Общие стили для блоков */
+.layer {
+    position: absolute;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+    /* z-index: 2; */
+    transition: var(--transition);
 }
 
 .layers {
@@ -59,108 +79,228 @@ body {
     overflow: hidden;
     position: relative;
     will-change: transform;
+    /* align-self: flex-end; */
 }
-.layer {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    align-self: center;
-    background-size: cover;
-    background-position: center;
-    will-change: transform;
-    z-index: 2;
-    transition: var(--transition);
+
+
+/* Стили первого блока */
+.main-header {
+    position: relative;
 }
-.layers__base {
-    transform: translate3d(0, calc(var(--scrollTop) / 3), 0);
-    z-index: 0;
-}
-.layers__middle {
-    transform: translate3d(0, calc(var(--scrollTop) / 2.5), 0);    
-}
-.layers__front {
-    transform: translate3d(0, calc(var(--scrollTop) / 5), 0);    
-}
+
 .layer__header {
     z-index: 1;
-    transform: translate3d(0, calc(var(--scrollTop) / 2), 0);
+    transform: translate3d(0, calc(var(--scrollTop) / 1.2), 0);
     will-change: transform;
     text-transform: uppercase;
     font-weight: 900;
-    color: #ffff63;
-    text-shadow: 0 0 15px #9d822b;
+    color: #000099;
+    text-shadow: 0 0 1.5px #FFFF00;
+    margin-top: -40vh;
 }
-.layers__title {
-    font-size: calc(var(--index) * 2.5);
-    letter-spacing: calc(var(--index) / 2.25);
-}
+
 .layers__caption {
     font-size: calc(var(--index) / 1.175);
     letter-spacing: calc(var(--index) / 3.5);
     margin-top: calc(var(--index) * -.75);
 }
-.main-article {
-    min-height: 100vh;
+
+.layers__title {
+    font-size: calc(var(--index) * 2.5);
+    letter-spacing: calc(var(--index) / 2.25);
+}
+
+
+/* стили второго блока (черный блок)*/
+.layers__text-black {
+    background-color: black;
+    color: white;
+    height: calc(100vh * 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transform: translate3d(0, calc(var(--scrollTop) / 2.2), 0);
+    transition: transform var(--transition);
+}
+
+.layers__text-black .text-content {
+    font-family: 'raleway_f', sans-serif;
+    max-width: 800px; /* Замените на желаемую ширину */
+    margin: 0 auto; /* Центрирование блока */
+    text-align: left; /* Выравнивание по левому краю */
+}
+
+.text-content h1,
+.text-content p {
+    opacity: 1;
+    transition: opacity 0.8s ease-in-out;
+    font-size: 12pt;
+}
+
+.layers__text-black.active .text-content h1,
+.layers__text-black.active .text-content p,
+.layers__text-white.active .text-content h1,
+.layers__text-white.active .text-content p {
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+
+
+/* Стили третьего блока (белого) */
+.layers__text-white {
+    background-color: white;
+    color: #000099;
+    height: calc(100vh * 1 / 3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transform: translate3d(0, calc(var(--scrollTop) / 2.2), 0);
+    transition: transform var(--transition);
+}
+
+.layers__text-white.text-content {
+    font-family: 'raleway_f', sans-serif;
+    max-width: 800px; /* Замените на желаемую ширину */
+    margin: 0 auto; /* Центрирование блока */
+    text-align: left; /* Выравнивание по левому краю */
+}
+
+
+.text-content h1,
+.text-content p,
+.text-content ul
+ {
+    opacity: 1;
+    transition: opacity 0.8s ease-in-out;
+    font-size: 12pt;
+}
+
+.text-content h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.layers__text-black.active .text-content h1,
+.layers__text-black.active .text-content p,
+.layers__text-white.active .text-content h1,
+.layers__text-white.active .text-content p {
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li:before {
+    /* content: "\2192"; /* Код стрелочки Unicode */
+    color: #000099; /* Цвет стрелочки */
+    margin-right: 8px; /* Расстояние между стрелочкой и текстом */
+}
+
+.highlight-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.highlight-link {
+    text-decoration: none;
+    color: #000080; /* Темно-синий цвет текста */
+}
+
+.highlight {
+    background-color: #ffff63; /* Желтый флюоресцентный цвет выделения */
+    color: #000080; /* Темно-синий цвет текста */
+    padding: 3px 6px; /* Отступы для выделения */
+    border-radius: 8px; /* Закругленные края */
+    transition: background-color 0.3s ease; /* Плавное изменение цвета при наведении */
+}
+
+.highlight:hover {
+    background-color: #FFEB3B; /* Цвет выделения при наведении */
+}
+
+/* Добавляем стили для элементов страницы phrasebook.html */
+
+
+.toki-layer {
+    position: relative;
+    height: 400px; /* Выберите желаемую высоту блока */
     background-size: cover;
     background-position: center;
-    background-color: #ffff63;
-    color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-	text-align: justify;
-	/* Update: */
-	top: -1px;
-	z-index: 10;
-}
-.main-article__header {
-	text-transform: uppercase;
-	font-size: calc(var(--index) * 1.8);
-	letter-spacing: calc(var(--index) / 7.5);
-	transform: var(--main-article-transform);
-	transition: var(--transition);
-	will-change: transform;
-}
-.main-article__paragraph {
-	max-width: calc(var(--index) * 30);
-	font-size: calc(var(--index) * .9);
-	margin-top: calc(var(--index) / 1.25);
-	transform: var(--main-article-transform);
-	transition: var(--transition);
-	will-change: transform;
-}
-.content {
-	will-change: transform;
-}
-.copy {
-	position: absolute;
-	bottom: calc(var(--index) * 2.5);
-	opacity: .45;
-	font-size: calc(var(--index) * .75);
-	letter-spacing: calc(var(--index) / 37.5);
+    background-repeat: no-repeat;
+    font-family: 'raleway_f', sans-serif;
+    max-width: 800px; /* Замените на желаемую ширину */
+    margin: 0 auto; /* Центрирование блока */
+    text-align: left; /* Выравнивание по левому краю */
 }
 
-/* Стили для footer */
-.footer {
+.toki-text-content {
     text-align: center;
-    margin-top: 50px;
-    font-size: 14px;
+    padding: 50px;
 }
 
-.footer a {
-    color: #15202B;
+.toki-text-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.toki-text-content ul li {
+    margin: 10px 0;
+}
+
+.toki-text-content ul li a {
     text-decoration: none;
+    color: #3498db; /* Измените цвет ссылок по своему вкусу */
     font-weight: bold;
 }
 
-.container_about {
-    max-width: 800px; /* Задайте максимальную ширину блока контейнера */
-    margin: 0 auto; /* Центрирование блока контейнера по горизонтали */
-    padding: 20px; /* Отступы вокруг текста внутри контейнера */
-    box-sizing: border-box; /* Учесть padding в общей ширине блока контейнера */
-  }
-  
-  .text-center {
-    text-align: center; /* Выравнивание текста по центру */
-  }
+.toki-text-content ul li a:hover {
+    color: #2980b9; /* Измените цвет при наведении по своему вкусу */
+}
+
+/* Стили кнопки-футера */
+.footer {
+    text-align: center;
+    padding: 20px;
+}
+
+.scroll-top-btn {
+    background-color: #ffffff;
+    color: #000080;
+    border: 2px solid #000080;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.scroll-top-btn:hover {
+    background-color: #ffff63;
+    color: #000080;
+}
+
+
+/* Дополнительные стили для кнопки "Translate" */
+.translate-btn-container {
+    text-align: center;
+    margin-top: 20px; /* Регулируйте отступ вверх, как вам нужно */
+}
+
+.translate-btn {
+    background-color: #ffffff;
+    color: #000080;
+    border: 2px solid #000080;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.translate-btn:hover {
+    background-color: #ffff63;
+    color: #000080;
+}

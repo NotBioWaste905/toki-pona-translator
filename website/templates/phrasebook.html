@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Phrasebook - Learn the basics of Toki Pona
+{% endblock %}
+
+{% block body %}
+<script type="text/javascript" src="{{ url_for('static', filename='libs/gsap/gsap.min.js') }} " defer></script>
+<script type="text/javascript" src="{{ url_for('static', filename='libs/gsap/ScrollTrigger.min.js') }} " defer></script>
+<script type="text/javascript" src="{{ url_for('static', filename='libs/gsap/ScrollSmoother.min.js') }} " defer></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+
+<!-- Основной контент -->
+<div class="wrapper">
+    <div class="content">
+
+        <div class="toki-layer toki-text layers__text layers__text-white" data-speed="0.8">
+            <div class="toki-text-content">
+                <h2>Learn Toki Pona - Phrasebook</h2>
+                <h3>Contents</h3>
+                <ul>
+                    <li><a href="#lesson1">Lesson 1:</a> Simple Greetings</li>
+                    <li><a href="#lesson2">Lesson 2:</a> Introducing Yourself</li>
+                    <li><a href="#lesson3">Lesson 3:</a> Basic Vocabulary Expansion</li>
+                    <li><a href="#lesson4">Lesson 4:</a> Building Simple Sentences</li>
+                    <li><a href="#lesson5">Lesson 5:</a> Advanced Conversational Topics</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="lesson1" class="toki-layer toki-text layers__text layers__text-white" data-speed="0.8">
+            <div class="toki-text-content">
+                <h3>Lesson 1: Simple Greetings</h3>
+                <p>In Lesson 1, you will learn the basic greetings to initiate conversations in Toki Pona. Practice simple phrases to greet others and create a friendly atmosphere.</p>
+                <p>Examples:</p>
+                <ul>
+                    <li><strong>Hello:</strong> toki!</li>
+                    <li><strong>Good morning:</strong> toki pona!</li>
+                    <li><strong>How are you?:</strong> sina pona ala?</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="lesson2" class="toki-layer toki-text layers__text layers__text-white" data-speed="0.8">
+            <div class="toki-text-content">
+                <h3>Lesson 2: Introducing Yourself</h3>
+                <p>Lesson 2 focuses on mastering the art of introducing yourself in Toki Pona. Learn how to share your name, origin, and other essential details in a concise manner.</p>
+                <p>Examples:</p>
+                <ul>
+                    <li><strong>My name is:</strong> nimi mi li...</li>
+                    <li><strong>I am from:</strong> mi lon ma...</li>
+                    <li><strong>Nice to meet you:</strong> pona lukin tawa sina!</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Add more sections for different lessons -->
+
+        <div id="lesson3" class="toki-layer toki-text layers__text layers__text-white" data-speed="0.8">
+            <div class="toki-text-content">
+                <h3>Lesson 3: Basic Vocabulary Expansion</h3>
+                <p>Lesson 3 expands your basic vocabulary in Toki Pona. Discover essential words and expressions to enhance your communication skills.</p>
+                <p>Examples:</p>
+                <ul>
+                    <li><strong>Numbers:</strong> wan (one), tu (two), luka (five)</li>
+                    <li><strong>Common Objects:</strong> tomo (house), moku (food), telo (water)</li>
+                    <li><strong>Expressing Likes and Dislikes:</strong> mi olin e ni (I like it), mi olin ala e ni (I don't like it)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="lesson4" class="toki-layer toki-text layers__text layers__text-white" data-speed="0.8">
+            <div class="toki-text-content">
+                <h3>Lesson 4: Building Simple Sentences</h3>
+                <p>Lesson 4 teaches you how to build simple sentences in Toki Pona. Understand the subject-verb-object structure, negation, and asking questions.</p>
+                <p>Examples:</p>
+                <ul>
+                    <li><strong>Subject-Verb-Object Structure:</strong> mi moku e kili (I eat fruit)</li>
+                    <li><strong>Negation:</strong> mi ken ala sona (I don't understand)</li>
+                    <li><strong>Asking Questions:</strong> sina tawa lon seme? (Where are you going?)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="lesson5" class="toki-layer toki-text layers__text layers__text-white" data-speed="0.8">
+            <div class="toki-text-content">
+                <h3>Lesson 5: Advanced Conversational Topics</h3>
+                <p>Lesson 5 explores advanced conversational topics in Toki Pona. Dive deeper into expressing emotions, discussing time, giving and receiving, and talking about hobbies.</p>
+                <p>Examples:</p>
+                <ul>
+                    <li><strong>Expressing Emotions:</strong> mi olin e ni (I love it)</li>
+                    <li><strong>Talking about Time:</strong> tenpo ni (now), tenpo kama (later)</li>
+                    <li><strong>Giving and Receiving:</strong> mi pana e toki tawa sina (I give you a message)</li>
+                    <li><strong>Discussing Hobbies:</strong> mi olin e lukin e toki (I like reading)</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Футер -->
+<footer class="footer">
+    <button class="scroll-top-btn" onclick="scrollToTop()">Go to Top</button>
+</footer>
+
+
+<script>
+    function scrollToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+
+{% endblock %}
+

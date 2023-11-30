@@ -1,24 +1,55 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Переводчик
+Translator
 {% endblock %}
 
 {% block body %}
-    <div class="container-fluid" style="display: flex; justify-content: center; align-items: center;">
-        <div class="row" style="display: flex; justify-content: center; align-items: center;">
-            <div class="col-md-6" style="margin-right: 20px;">
-                <h3>English</h3>
-                <form action="{{ url_for("translate")}}" method="post">
-                    <textarea class="form-control" rows="15" id="inputText" name="inputText" placeholder="Enter your text">{{ input }}</textarea>
-                    <button type="submit">Translate</button>
-                </form>
-            </div>
-            <div class="col-md-6">
-                <h3>Toki pona</h3>
-                <textarea class="form-control" rows="15" id="outputText" readonly>{{ translation }}</textarea>
-            </div>
+<div class="wrapper">
+    <div class="content">
+        <div class="container-fluid"
+            style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+
+            <h2 style="margin-bottom: 20px; color: #000080;">Welcome to the Translator!</h2>
+            <p style="margin-bottom: 30px;">Enter a word or a sentence in English or Toki Pona, and we'll provide you
+                with its translation.</p>
+
+
+            <!-- Форма для выбора направления перевода -->
+            <form id="directionForm" method="POST" style="margin-bottom: 20px;">
+                <span style="background-color: #ffff63; padding: 5px;">Translate from:</span>
+                <select id="direction" name="_direction" class="Input">
+                    <option value="eng_toki">English to Toki Pona</option>
+                    <option value="toki_eng" selected="selected">Toki Pona to English</option>
+                </select>
+            </form>
+
+            <!-- Формы для ввода слова и вывода перевода -->
+            <form id="translationForm" method="post"
+                style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; max-width: 800px;">
+
+                <div style="width: 400px; margin: 10px;">
+                    <label for="inputWord">Enter a word or a sentence for translation:</label>
+                    <input type="text" id="inputWord" name="inputWord" style="width: 100%;">
+                </div>
+
+
+                <div style="width: 400px; margin: 10px;">
+                    <label for=""><b>{{ orig_sentence }}</b></label>
+                    <br>
+                    <label for="outputTranslation">Translation:</label>
+                    <div id="outputTranslation"
+                        style="border: 1px solid #ccc; padding: 10px; height: 200px; overflow: auto;">{{ translation }}
+                    </div>
+                </div>
+
+                <div class="translate-btn-container" style="margin-top: 10px; width: 100%;">
+                    <button class="translate-btn" type="submit">Translate</button>
+                </div>
+            </form>
+            <br>
+            <br>
         </div>
     </div>
-    </div>
+</div>
 {% endblock %}
