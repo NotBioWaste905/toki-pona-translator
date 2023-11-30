@@ -10,10 +10,10 @@
     <div class="content">
         
 
-    <h3>English-TokiPona dictionary</h3>
+    <h3>TokiPona-English dictionary</h3>
 
     <form method="post" action="{{ url_for('dictionary') }}">
-        <label for="englishWord">Enter an English word:</label>
+        <label for="englishWord">Enter an Tokipona word:</label>
         <input type="text" id="englishWord" name="englishWord">
         <button type="submit" class="translate-btn">Search</button>
 
@@ -21,9 +21,10 @@
 
     {% if results %}
         <h3>Translations:</h3>
+        <h4>{{ orig_word }}</h4>
         <ul>
             {% for result in results %}
-                <li>{{ result["tok"] }}</li>
+                <li>{{ result }}</li>
             {% endfor %}
         </ul>
     {% endif %}

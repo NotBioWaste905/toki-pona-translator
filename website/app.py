@@ -2,14 +2,14 @@ from flask import Flask
 from flask import request
 from flask.templating import render_template
 from flask import jsonify
-import eng2tok
+import translator
 import json
 
 app = Flask(__name__)
 
 # загружаем словарь из файла dictionary.json
-with open("dictionary.json", "r", encoding="utf-8") as file:
-    dictionary_data = json.load(file)["data"]
+with open("website\dictionary.json", "r", encoding="utf-8") as file:
+    dictionary_data = json.loads(file.read())
 
 
 @app.route('/')
@@ -28,25 +28,27 @@ def translate():
     input_text = ""
     translation = ""
     target_language = "tokipona"  # по умолчанию переводим с английского на токипона
-
+    print(request.form.get('_direction'))
     if request.method == "POST":
-        input_text = request.form.get("inputText")
-        target_language = request.form.get("languageSelect")
-        translation = eng2tok.translate(text=input_text, target_language=target_language)
-        # print(input_text)
+        input_text = request.form.get("inputWord")
+        translation = translator.translate(text=input_text, target_language=target_language)
+        
 
-    return render_template('translate.html', input=input_text, translation=translation, target_language=target_language)
+    return render_template('translate.html', orig_sentence=input_text, input=input_text, translation=translation, target_language=target_language)
 
 
 @app.route('/dictionary', methods=['post', 'get'])
 def dictionary():
     results = []
-    
+    toki_word = ''
     if request.method == "POST":
-        english_word = request.form.get("englishWord").lower()
-        results = [item["translation"] for item in dictionary_data if english_word in item["translation"]["en"].lower()]
+        toki_word = request.form.get("englishWord").lower()
+        for i in dictionary_data:
+            if i['word'] == toki_word.strip():
+                results = i['meanings'][-1]
+        # results = [item["translation"] for item in dictionary_data if english_word in item["translation"]["en"].lower()]
 
-    return render_template('dictionary.html', results=results)
+    return render_template('dictionary.html', orig_word=toki_word, results=results)
 
 
 @app.route('/about')
