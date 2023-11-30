@@ -15,12 +15,25 @@
 </head>
 
 <body>
-    <!-- Шапка -->
+    <header style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
+        <div>
+            <h1 style="margin: 0; font-size: 28px;">TokiChill</h1>
+        </div>
+
+        <div>
+            <a href="https://github.com/NotBioWaste905/toki-pona-translator" target="_blank">
+                <img src="{{ url_for('static', filename='img/github.png') }}" alt="GitHub" style="height: 40px;">
+            </a>
+        </div>
+    </header>
+
+    <!-- Панель навигации -->
     <nav class="navbar">
-        <img src="/static/img/Toki_pona.png" alt="Логотип">
         <a href="/">Main</a>
+        <a href="/phrasebook">Phrasebook</a>
         <a href="/translate">Translator</a>
-        <a href="/about">About Us</a>
+        <a href="/dictionary">Dictionary</a>
+        <a href="/about">Support Us</a>
     </nav>
     
     <!-- Основное содержимое страницы -->
@@ -28,10 +41,6 @@
         {% block body %}{% endblock %}
     </div>
 
-    <!-- Footer -->
-    <div class="footer">
-        Читать подробнее о <a href="https://ru.wikipedia.org/wiki/%D0%A2%D0%BE%D0%BA%D0%B8%D0%BF%D0%BE%D0%BD%D0%B0" target="_blank">Токипоне</a>
-    </div>
     
 </body>
 </html>
